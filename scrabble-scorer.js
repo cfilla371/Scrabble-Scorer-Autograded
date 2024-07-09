@@ -1,6 +1,6 @@
 const input = require("readline-sync");
 let newPointStructure = {};
-let word = "not updated";
+let word = '';
 
 const oldPointStructure = {
   1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'],
