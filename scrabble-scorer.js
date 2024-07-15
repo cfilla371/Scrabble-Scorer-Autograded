@@ -1,6 +1,4 @@
 const input = require("readline-sync");
-let newPointStructure = {};
-let word = '';
 
 const oldPointStructure = {
   1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'],
@@ -23,9 +21,9 @@ return newObject;
 }
 
 function initialPrompt() {
-   word = input.question("Let's play some scrabble! Enter a word:");
-   
-   return word;
+ let x = input.question("Let's play some scrabble! Enter a word:");
+
+ return x
 };
 
 let simpleScorer = function(word){
@@ -40,7 +38,7 @@ let vowelBonusScorer = function(word){
       let vowels = [ 'A', 'E', 'U', 'I', 'O'
       ];
       let consonants = ['Q', 'Z', 'W', 'S', 'C', 'R', 'F', 'V', 'T',
-      'G', 'B', 'Y', 'H', 'N', 'J', 'M', 'K', 'L', 'P'
+      'G', 'B', 'Y', 'H', 'N', 'J', 'M', 'K', 'L', 'P', 'X'
       ];
       for (let i = 0; i < word.length; i++) {
          if (vowels.includes(word[i])) {
@@ -83,17 +81,16 @@ let vowelBonusScorer = function(word){
       let scoringAlgorithms = [simple, vowel, scrabble];
 
 function scorerPrompt() {
-   game = input.question(' press 0 1 2 : ')
-
-   return game
+   let mode = input.question(' press 0 1 2 : ')
+   return mode
 }
 
 newPointStructure = transform(oldPointStructure);
 
 function runProgram() {
-   initialPrompt();
-   scorerPrompt();
-   console.log(scoringAlgorithms[game].scorerFunction(word));
+   let word = initialPrompt();
+   let game = scorerPrompt();
+   console.log(`Score for ${word} ${scoringAlgorithms[game].scorerFunction(word)}`);
 }
 
 module.exports = {
